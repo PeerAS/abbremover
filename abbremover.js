@@ -30,9 +30,7 @@ function RemoveOnDagbladet()
         
          if(element.href.indexOf("Behring") !== -1 || element.href.indexOf("behring") !== -1 || element.href.indexOf("Breivik") !== -1 || element.href.indexOf("breivik") !== -1)
         {
-            var  articleElement = element.closest('article');
-            
-            articleElement.innerHTML = GetCatImage();
+            InsertCatPicture(element, 'article');
         }
     }
 }
@@ -45,9 +43,7 @@ function RemoveOnAftenposten()
         
          if(element.href.indexOf("Behring") !== -1 || element.href.indexOf("behring") !== -1 || element.href.indexOf("Breivik") !== -1 || element.href.indexOf("breivik") !== -1)
         {
-            var  articleElement = element.closest('.df-article');
-            
-            articleElement.innerHTML = GetCatImage();
+            InsertCatPicture(element, '.df-article');
         }
     }   
 }
@@ -60,11 +56,54 @@ function RemoveOnNRK()
         
          if(element.href.indexOf("Behring") !== -1 || element.href.indexOf("behring") !== -1 || element.href.indexOf("Breivik") !== -1 || element.href.indexOf("breivik") !== -1)
         {
-            var  articleElement = element.closest('.article-extract');
-            
-            articleElement.innerHTML = GetCatImage();
+            InsertCatPicture(element, '.article-extract');
         }
+        
+        NRKEdgeCases();
     }  
+}
+
+function NRKEdgeCases()
+{
+    var imageElements = document.getElementsByTagName("img");
+    
+    for (var index = 0; index < imageElements.length; index++) {
+        var element = imageElements[index];
+        
+        if(element.alt.indexOf("Behring") !== -1 || element.alt.indexOf("behring") !== -1 || element.alt.indexOf("Breivik") !== -1 || element.alt.indexOf("breivik") !== -1)
+        {
+            InsertCatPicture(element, '.article-extract');
+        }
+    }
+    
+    var linkElements = document.getElementsByTagName("a");
+    
+    for (var index = 0; index < linkElements.length; index++) {
+        var element = linkElements[index];
+        
+        if(element.href.indexOf("tv.nrk.no/direkte") !== -1)
+        {
+            var childElements = element.childNodes;
+            
+            for (var index2 = 0; index2 < childElements.length; index2++) {
+                var element = childElements[index2];
+                
+                if(element.innerHTML.indexOf("Breivik"))
+                {
+                    InsertCatPicture(element, '.article-extract');
+            
+                }
+            }
+        }
+        
+    }
+}
+
+function InsertCatPicture(element, querySelector)
+{
+    var  articleElement = element.closest(querySelector);
+            
+    articleElement.innerHTML = GetCatImage();
 }
 
 function GetCatImage()
