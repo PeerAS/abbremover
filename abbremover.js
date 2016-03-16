@@ -52,7 +52,7 @@ function GetCatImage()
     
     if(id < 1)
         id = 1;
-    return '<a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&image_id=' + id + '&type=gif"></a>';
+    return '<a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&api_key=NzMyNDg&image_id=' + id + '&type=gif"></a>';
 }
 
 if(window.location.href.indexOf("vg.no") !== -1)
