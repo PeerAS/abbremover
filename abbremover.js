@@ -1,5 +1,11 @@
 
 
+document.addEventListener('DOMContentLoaded', function()
+{
+    console.log("loaded");
+    RemoveABB();
+});
+
 function RemoveOnVG()
 {
     var linkElements = document.getElementsByTagName("a");
@@ -70,7 +76,10 @@ function GetCatImage()
     return '<a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&api_key=NzMyNDg&image_id=' + id + '&type=gif" style="width:100%"></a>';
 }
 
-if(window.location.href.indexOf("vg.no") !== -1)
+
+function RemoveABB()
+{
+    if(window.location.href.indexOf("vg.no") !== -1)
 {
     RemoveOnVG();
 }
@@ -89,3 +98,5 @@ else if(window.location.href.indexOf('nrk.no') !== -1)
 {
     RemoveOnNRK();
 }
+}
+

@@ -17,7 +17,7 @@
                 "http://www.nrk.no/*"
             ],
             "js": ["abbremover.js"],
-            "run_at":"document_end"
+            "run_at":"document_start"
         }
     ]
 }
