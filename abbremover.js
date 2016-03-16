@@ -1,8 +1,5 @@
 
 
-
-document.addEventListener('DOMContentLoaded', )
-
 function RemoveOnVG()
 {
     var linkElements = document.getElementsByTagName("a");
