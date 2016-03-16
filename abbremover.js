@@ -15,9 +15,7 @@ function RemoveOnVG()
         
         if(element.href.indexOf("Behring") !== -1 ||element.href.indexOf("behring") !== -1 || element.href.indexOf("breivik") !== -1)
         {
-            var  articleElement = element.closest('.article-extract');
-            
-            articleElement.innerHTML = GetCatImage();
+            InsertCatPicture(element, '.article-extract');
         }
     }
 }
