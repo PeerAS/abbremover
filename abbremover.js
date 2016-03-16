@@ -46,6 +46,21 @@ function RemoveOnAftenposten()
     }   
 }
 
+function RemoveOnNRK()
+{
+    var linkElements = document.getElementsByTagName("a");
+    for (var index = 0; index < linkElements.length; index++) {
+        var element = linkElements[index];
+        
+         if(element.href.indexOf("Behring") !== -1 || element.href.indexOf("behring") !== -1 || element.href.indexOf("Breivik") !== -1 || element.href.indexOf("breivik") !== -1)
+        {
+            var  articleElement = element.closest('.article-extract');
+            
+            articleElement.innerHTML = GetCatImage();
+        }
+    }  
+}
+
 function GetCatImage()
 {
     var id = parseInt(Math.random() * 1000);
@@ -68,4 +83,9 @@ else if(window.location.href.indexOf('dagbladet.no') !== -1)
 else if(window.location.href.indexOf('aftenposten.no') !== -1)
 {
     RemoveOnAftenposten();
+}
+
+else if(window.location.href.indexOf('nrk.no') !== -1)
+{
+    RemoveOnNRK();
 }
