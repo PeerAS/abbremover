@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function()
 {
-    console.log("loaded");
     RemoveABB();
 });
 
@@ -41,9 +40,32 @@ function RemoveOnAftenposten()
         
          if(element.href.indexOf("Behring") !== -1 || element.href.indexOf("behring") !== -1 || element.href.indexOf("Breivik") !== -1 || element.href.indexOf("breivik") !== -1)
         {
-            InsertCatPicture(element, '.df-article');
+            if(!element.classList.contains('webhit_list'))
+                InsertCatPicture(element, '.df-article');
         }
-    }   
+        
+    }  
+    
+    AftenpostenEdgeCases(linkElements); 
+}
+
+function AftenpostenEdgeCases(elements)
+{
+    for (var index = 0; index < elements.length; index++) {
+        var element = elements[index];
+        
+        var child = element.firstChild;
+        
+        if(child && child.innerHTML)
+        {
+            if(child.innerHTML.indexOf("Behring") !== -1 || child.innerHTML.indexOf("behring") !== -1 || child.innerHTML.indexOf("Breivik") !== -1 || child.innerHTML.indexOf("breivik") !== -1)
+            {
+                
+                InsertCatPicture(element, '.df-article');
+            }
+        }
+        
+    }
 }
 
 function RemoveOnNRK()
